@@ -72,13 +72,17 @@ const { title } = Astro.props;
       }
 
       // Load-in glitch: cascade left to right through each word, once
-      const phrases = document.querySelectorAll('.glitch-phrase');
-      phrases.forEach((phrase, i) => {
-        setTimeout(() => {
-          phrase.classList.add('glitch-active');
-          setTimeout(() => phrase.classList.remove('glitch-active'), 1800);
-        }, i * 250);
-      });
+      // Skip on case study pages
+      const isCaseStudy = window.location.pathname.startsWith('/work/');
+      if (!isCaseStudy) {
+        const phrases = document.querySelectorAll('.glitch-phrase');
+        phrases.forEach((phrase, i) => {
+          setTimeout(() => {
+            phrase.classList.add('glitch-active');
+            setTimeout(() => phrase.classList.remove('glitch-active'), 1800);
+          }, i * 250);
+        });
+      }
 
       const hamburger = document.getElementById('hamburger');
       const menu = document.getElementById('menu');
