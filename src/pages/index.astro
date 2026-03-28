@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Jenny K Walsh">
+  <div class="home">
+    <section class="hero">
+      <div class="hero-text">
+        <h1 id="glitch-h1">
+          Hi, I'm Jenny, a product designer living in Seattle.
+        </h1>
+        <div class="body-text">
+          <p>
+            I make complex products feel simple. Right now I'm doing that at <a href="https://shopify.com" target="_blank" rel="noopener"><strong>Shopify</strong></a>, where I work on <strong>checkout</strong> and <strong>agentic commerce</strong>. I design, I prototype, I ship code. I obsess over the details.
+          </p>
+          <p>
+            I'm a <strong>maker</strong> 24/7, only happy when I'm creating something. I build pottery, shoot photos, and create and perform acrobatic choreography. The hobbies are ever-evolving. <a href="/contact" class="inline-link"><strong>Say hi.</strong></a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</Layout>
+
+<style>
+  .home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  .hero {
+    padding: 9.5rem 3rem 4rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 10rem 1.5rem 2rem;
+    }
+  }
+
+  .hero-text {}
+
+  h1 {
+    font-size: clamp(2.25rem, 8vw, 7.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    margin-bottom: 3rem;
+    color: var(--black);
+    max-width: 1200px;
+  }
+
+  h1 em {}
+
+  .body-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    font-size: clamp(1rem, 3.15vw, 2.25rem);
+    font-weight: 300;
+    max-width: 1200px;
+  }
+
+  .body-text strong {
+    font-weight: 700;
+  }
+
+  .body-text a,
+  .inline-link {
+    color: var(--black);
+    text-decoration: none;
+    background-color: #F6FF00;
+    padding: 0 4px;
+    display: inline-block;
+    position: relative;
+    transition: box-shadow 0.1s steps(2), transform 0.1s steps(2);
+  }
+
+  /* Hover — CMYK misregistration: cyan offset right, magenta offset left */
+  .body-text a:hover,
+  .inline-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 2px 0 #00FFFF, -4px -2px 0 #FF00FF;
+  }
+
+  /* Click burst animation */
+  @keyframes link-click-glitch {
+    0%   { transform: scale(0.95);               background: #1a1a1a; color: #F6FF00; box-shadow:  9px 0 0 #00FFFF, -9px 0 0 #FF00FF; }
+    20%  { transform: scale(1.05) skewX(-5deg) translateY(-3px); background: #F6FF00; color: #1a1a1a; box-shadow: 13px 3px 0 #FF00FF, -11px -3px 0 #00FFFF; }
+    40%  { transform: scale(0.98) skewX(3deg)  translateY(-1px); background: #00FFFF; color: #1a1a1a; box-shadow: -6px 0 0 #FF00FF,   5px 0 0 #F6FF00; }
+    65%  { transform: scale(1.02)              translateY(-2px); background: #F6FF00; color: #1a1a1a; box-shadow:  3px 1px 0 #00FFFF,  -3px -1px 0 #FF00FF; }
+    100% { transform: scale(1)                translateY(0);    background: #F6FF00; color: #1a1a1a; box-shadow: none; }
+  }
+
+  :global(.link-glitch-click) {
+    animation: link-click-glitch 0.38s steps(1) forwards !important;
+  }
+
+</style>
+
+<script>
+  // Link glitch click effect
+  document.querySelectorAll('.body-text a, .inline-link').forEach(link => {
+    link.addEventListener('click', () => {
+      link.classList.add('link-glitch-click');
+      link.addEventListener('animationend', () => link.classList.remove('link-glitch-click'), { once: true });
+    });
+  });
+
+</script>

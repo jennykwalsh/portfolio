@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "WebSearch",
+      "WebFetch(domain:jennykwalsh.com)",
+      "Bash(curl -s \"https://c-p.rmcdn.net/64ab50b627652a0052e0a842/5111072/Screenshot-1be51c3f-4385-4fe0-8cb5-733c65c8e730_readyscr.jpg\" -o /Users/jennywalsh/Coding/portfolio/public/work/img1.jpg)",
+      "Bash(curl -s \"https://c-p.rmcdn.net/64ab50b627652a0052e0a842/5111072/Screenshot-085483ed-e64f-48f8-9f71-4050ac7a758a.jpg\" -o /Users/jennywalsh/Coding/portfolio/public/work/img2.jpg)",
+      "Bash(curl -s \"https://c-p.rmcdn.net/64ab50b627652a0052e0a842/5111072/Screenshot-c2dc7fed-580e-44b5-a81d-cb1f269cc402.jpg\" -o /Users/jennywalsh/Coding/portfolio/public/work/img3.jpg)",
+      "Bash(curl -s \"https://c-p.rmcdn.net/64ab50b627652a0052e0a842/5111072/Screenshot-0922b4ca-b0b8-4ddd-9165-6437e91e9a3b.jpg\" -o /Users/jennywalsh/Coding/portfolio/public/work/img4.jpg)",
+      "Bash(curl -s \"https://c-p.rmcdn.net/64ab50b627652a0052e0a842/5111072/Screenshot-96547897-d43c-4b23-b791-ce97655a5d52.jpg\" -o /Users/jennywalsh/Coding/portfolio/public/work/img5.jpg)",
+      "Bash(curl -s \"https://jennykwalsh.com/work/\")",
+      "Bash(python3:*)"
+    ]
+  }
+}

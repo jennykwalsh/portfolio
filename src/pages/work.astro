@@ -1,0 +1,232 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const projects = [
+  {
+    logo: '/work/shopify-logo',
+    company: 'Shopify',
+    role: null,
+    title: 'One-page checkout',
+    description: 'Shopify\'s checkout already processed more than 10% of global ecommerce GMV and was the highest-converting checkout in the world. I joined the redesign and refactor mid-project, taking it across the finish line by resolving edge cases, running user testing, and shipping the final product without sacrificing the conversion performance that millions of merchants depend on.',
+    link: null,
+    linkLabel: 'Case study coming soon',
+    image: null,
+  },
+  {
+    logo: '/work/1800contacts-logo.png',
+    company: '1-800 Contacts',
+    role: null,
+    title: 'Return Customer Dashboard',
+    description: 'A returning customer experience that uses existing prescription data to make reordering a one-click process. 2% conversion increase, $2.3MM annual revenue boost.',
+    link: '/work/return-customer-dashboard',
+    linkLabel: 'Read case study',
+    image: '/work/return-customer-dashboard-hero.webp',
+  },
+  {
+    logo: '/work/1800contacts-logo.png',
+    company: '1-800 Contacts',
+    role: null,
+    title: 'Rapid Reorder Checkout',
+    description: 'A redesigned checkout for 1-800 Contacts\' returning customers. Clearer pricing, less friction, fewer steps. $9.88MM annualized revenue boost.',
+    link: '/work/rapid-reorder-checkout',
+    linkLabel: 'Read case study',
+    image: '/work/rapid-reorder-hero.webp',
+  },
+  {
+    logo: null,
+    company: 'Caseworthy',
+    role: 'Director of UX Design',
+    title: 'Caseworthy',
+    description: 'I led a full overhaul of the Caseworthy app as both director and designer. Redesigned the client management and reporting products, managed a front-end dev team, and built a new sales website from scratch.',
+    link: '/work/caseworthy',
+    linkLabel: 'See more',
+    image: '/work/caseworthy-hero.webp',
+  },
+  {
+    logo: null,
+    company: 'TaskEasy',
+    role: 'Senior UX Designer',
+    title: 'TaskEasy',
+    description: 'I redesigned the consumer-facing website, designed consumer and contractor mobile apps, and created a new logo and brand identity from the ground up.',
+    link: '/work/taskeasy',
+    linkLabel: 'See more',
+    image: '/work/taskeasy-hero.webp',
+  },
+];
+---
+
+<Layout title="Jenny K Walsh — Work">
+  <div class="work-page">
+    <div class="projects">
+      {projects.map((project) => (
+        <article class={`project${!project.image ? ' project--no-image' : ''}`}>
+          <div class="project-text">
+            {project.logo
+              ? <div class="project-logo"><img src={project.logo} alt={project.company} /></div>
+              : <p class="company">{project.company}</p>
+            }
+            {project.role && <p class="role">{project.role}</p>}
+            <h2 set:html={project.title} />
+            <p class="description" set:html={project.description} />
+            {project.link
+              ? <a href={project.link} class="project-link">{project.linkLabel}</a>
+              : <span class="project-link-soon">{project.linkLabel}</span>
+            }
+          </div>
+          {project.image && (
+            <div class="project-image">
+              <img src={project.image} alt={project.title} />
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .work-page {
+    padding: 200px 3rem 6rem;
+  }
+
+  h1 {
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  .projects {
+    display: flex;
+    flex-direction: column;
+    gap: 5rem;
+  }
+
+  .project {
+    display: grid;
+    grid-template-columns: 560px 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .project--no-image {
+    grid-template-columns: 1fr;
+  }
+
+  .project--no-image .description {
+    max-width: 100%;
+  }
+
+  .project-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .project-logo img {
+    height: 32px;
+    width: auto;
+    display: block;
+  }
+
+  .role {
+    display: inline-block;
+    align-self: flex-start;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--white);
+    background: var(--black);
+    padding: 0.3rem 0.75rem;
+  }
+
+  h2 {
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--black);
+  }
+
+  .company {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    opacity: 0.6;
+  }
+
+  .description {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    color: var(--black);
+    max-width: 560px;
+  }
+
+  .description em {
+  }
+
+  .project-link {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: 0.4rem;
+    color: var(--black);
+    font-size: 1.05rem;
+    font-weight: 900;
+    text-decoration: none;
+    background-color: #F6FF00;
+    padding: 0 4px;
+    position: relative;
+    transition: box-shadow 0.1s steps(2), transform 0.1s steps(2);
+  }
+
+  .project-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 2px 0 #00FFFF, -4px -2px 0 #FF00FF;
+  }
+
+  .project-link-soon {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: 0.4rem;
+    color: var(--black);
+    font-size: 1.05rem;
+    font-weight: 900;
+    text-decoration: none;
+    background-color: #F6FF00;
+    padding: 0 4px;
+    opacity: 0.4;
+  }
+
+  @keyframes link-click-glitch {
+    0%   { transform: scale(0.95);               background: #1a1a1a; color: #F6FF00; box-shadow:  9px 0 0 #00FFFF, -9px 0 0 #FF00FF; }
+    20%  { transform: scale(1.05) skewX(-5deg) translateY(-3px); background: #F6FF00; color: #1a1a1a; box-shadow: 13px 3px 0 #FF00FF, -11px -3px 0 #00FFFF; }
+    40%  { transform: scale(0.98) skewX(3deg)  translateY(-1px); background: #00FFFF; color: #1a1a1a; box-shadow: -6px 0 0 #FF00FF,   5px 0 0 #F6FF00; }
+    65%  { transform: scale(1.02)              translateY(-2px); background: #F6FF00; color: #1a1a1a; box-shadow:  3px 1px 0 #00FFFF,  -3px -1px 0 #FF00FF; }
+    100% { transform: scale(1)                translateY(0);    background: #F6FF00; color: #1a1a1a; box-shadow: none; }
+  }
+
+  :global(.link-glitch-click) {
+    animation: link-click-glitch 0.38s steps(1) forwards !important;
+  }
+
+  .project-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .project {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.project-link').forEach(link => {
+    link.addEventListener('click', () => {
+      link.classList.add('link-glitch-click');
+      link.addEventListener('animationend', () => link.classList.remove('link-glitch-click'), { once: true });
+    });
+  });
+</script>

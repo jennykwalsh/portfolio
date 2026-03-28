@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Jenny K Walsh — Contact">
+  <div class="contact-page">
+    <div class="contact-content">
+
+      <div class="contact-header">
+        <h1>Let's talk.</h1>
+        <p class="intro">Got a creative project, a collaboration idea, or just want to say hello? I'd love to hear from you. Fill out the form or shoot me an email directly at <a href="mailto:jennywalsh@hey.com" class="inline-link">jennywalsh@hey.com</a>.</p>
+      </div>
+
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/YOUR_FORM_ID"
+        method="POST"
+      >
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required rows="6" placeholder="Tell me what's on your mind."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Send it →</button>
+      </form>
+
+    </div>
+  </div>
+</Layout>
+
+<style>
+  .contact-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+  }
+
+  .contact-content {
+    width: 100%;
+    max-width: 900px;
+    padding: 200px 3rem 8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .contact-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.05;
+  }
+
+  .intro {
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 620px;
+  }
+
+  .inline-link {
+    color: var(--black);
+    text-decoration: none;
+    background-color: #F6FF00;
+    padding: 0 4px;
+    display: inline-block;
+    transition: box-shadow 0.1s steps(2), transform 0.1s steps(2);
+  }
+
+  .inline-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 2px 0 #00FFFF, -4px -2px 0 #FF00FF;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  input,
+  textarea {
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 1rem;
+    color: var(--black);
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid var(--black);
+    padding: 0.6rem 0;
+    outline: none;
+    transition: border-color 0.15s;
+    width: 100%;
+    resize: none;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(0,0,0,0.3);
+  }
+
+  input:focus,
+  textarea:focus {
+    border-color: #F6FF00;
+    background: rgba(246,255,0,0.04);
+  }
+
+  textarea {
+    border: 2px solid var(--black);
+    padding: 0.75rem;
+  }
+
+  textarea:focus {
+    border-color: #F6FF00;
+  }
+
+  .submit-btn {
+    align-self: flex-start;
+    font-family: 'Funnel Display', sans-serif;
+    font-size: 1rem;
+    font-weight: 900;
+    color: var(--black);
+    background: #F6FF00;
+    border: none;
+    padding: 0.75rem 2rem;
+    cursor: pointer;
+    transition: box-shadow 0.1s steps(2), transform 0.1s steps(2);
+  }
+
+  .submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 2px 0 #00FFFF, -4px -2px 0 #FF00FF;
+  }
+
+  @media (max-width: 640px) {
+    .contact-content {
+      padding: 160px 1.5rem 6rem;
+      gap: 3rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.inline-link').forEach(link => {
+    link.addEventListener('click', () => {
+      link.classList.add('link-glitch-click');
+      link.addEventListener('animationend', () => link.classList.remove('link-glitch-click'), { once: true });
+    });
+  });
+</script>

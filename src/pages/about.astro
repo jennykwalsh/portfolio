@@ -1,0 +1,260 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Jenny K Walsh — About">
+  <div class="about-page">
+    <div class="about-content">
+      <div class="about-text">
+        <h1>About me</h1>
+        <p>
+          I design digital products, and I've been at it for over 25 years. <strong>Design craft</strong> is my foundation and where
+          I shine. The taste, the instinct, the eye for what's right, that's something I've built over years of
+          doing the work. I love going deep on a product to fully understand its problems, its opportunities, and
+          what it takes to make it feel effortless for the people who use it. That curiosity is what keeps my
+          work fresh.
+        </p>
+
+        <p>
+          I use AI tools daily to amplify my craft. I build <strong>fully functioning prototypes</strong> that blur the line between
+          concept and real product, which lets me cut through abstraction and get closer to how something actually
+          feels in use. I've also built my own tools to speed up my workflow and act as a second brain. I <strong>ship
+          front-end fixes to production</strong> myself, because the fastest way to improve something is to just go fix it.
+        </p>
+
+        <p>
+          Outside of work, I collect hobbies. I've spent the past 10 years performing as an <strong>acrobat and aerialist</strong>
+          in productions and workshops around the country. I also make pottery, shoot photos, keep bees, and
+          occasionally hit the streets on roller skates.
+        </p>
+
+        <p>
+          My partner and I run{' '}
+          <a href="#" class="inline-link"><strong>Form &amp; Pixel Arts Collective</strong></a>, home to all of our creative side
+          ventures. We teach acrobatics workshops, offer photography services, and sell pottery (so far).
+        </p>
+
+        <p>
+          I'd love to chat.{' '}
+          <a href="/contact" class="inline-link">Hit me up anytime.</a>
+        </p>
+
+        <div class="social-bar">
+          <a href="#" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <img class="icon-default" src="/icons/linkedin.svg" alt="LinkedIn" />
+            <img class="icon-hover" src="/icons/linkedin-hover.svg" alt="" />
+          </a>
+          <a href="#" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <img class="icon-default" src="/icons/instagram.svg" alt="Instagram" />
+            <img class="icon-hover" src="/icons/instagram-hover.svg" alt="" />
+          </a>
+          <a href="#" class="social-link" aria-label="Threads" target="_blank" rel="noopener">
+            <img class="icon-default" src="/icons/threads.svg" alt="Threads" />
+            <img class="icon-hover" src="/icons/threads-hover.svg" alt="" />
+          </a>
+        </div>
+      </div>
+
+      <div class="about-photos">
+        <div class="photo-circle photo-circle--1">
+          <img src="/about/image1.webp" alt="Jenny Walsh" />
+        </div>
+        <div class="photo-circle photo-circle--2">
+          <img src="/about/image2.webp" alt="Jenny Walsh" />
+        </div>
+        <div class="photo-circle photo-circle--3">
+          <img src="/about/image3.webp" alt="Jenny Walsh" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+</Layout>
+
+<style>
+  .about-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 33%;
+    gap: 4rem;
+    padding: 200px 2.5rem 4rem;
+    align-items: start;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1.4rem;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
+    line-height: 1.75;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 2rem;
+  }
+
+  .social-bar {
+    display: flex;
+    align-self: flex-start;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .social-link {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 24px;
+    height: 24px;
+  }
+
+  .social-link img {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 0.15s;
+  }
+
+  .icon-hover {
+    opacity: 0;
+  }
+
+  .social-link:hover .icon-default {
+    opacity: 0;
+  }
+
+  .social-link:hover .icon-hover {
+    opacity: 1;
+  }
+
+  .about-text strong {
+    font-weight: 700;
+  }
+
+  .tagline {
+    font-size: clamp(1.1rem, 2vw, 1.3rem);
+    color: var(--black);
+  }
+
+  .inline-link {
+    color: var(--black);
+    text-decoration: none;
+    background-color: #F6FF00;
+    padding: 0 4px;
+    display: inline-block;
+    position: relative;
+    transition: box-shadow 0.1s steps(2), transform 0.1s steps(2);
+  }
+
+  .inline-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 4px 2px 0 #00FFFF, -4px -2px 0 #FF00FF;
+  }
+
+  @keyframes link-click-glitch {
+    0%   { transform: scale(0.95);                            background: #1a1a1a; color: #F6FF00; box-shadow:  9px 0 0 #00FFFF, -9px 0 0 #FF00FF; }
+    20%  { transform: scale(1.05) skewX(-5deg) translateY(-3px); background: #F6FF00; color: #1a1a1a; box-shadow: 13px 3px 0 #FF00FF, -11px -3px 0 #00FFFF; }
+    40%  { transform: scale(0.98) skewX(3deg)  translateY(-1px); background: #00FFFF; color: #1a1a1a; box-shadow: -6px 0 0 #FF00FF,   5px 0 0 #F6FF00; }
+    65%  { transform: scale(1.02)              translateY(-2px); background: #F6FF00; color: #1a1a1a; box-shadow:  3px 1px 0 #00FFFF,  -3px -1px 0 #FF00FF; }
+    100% { transform: scale(1)                translateY(0);     background: #F6FF00; color: #1a1a1a; box-shadow: none; }
+  }
+
+  :global(.link-glitch-click) {
+    animation: link-click-glitch 0.38s steps(1) forwards !important;
+  }
+
+  .about-photos {
+    position: relative;
+    height: 58vw;
+  }
+
+  .photo-circle {
+    position: absolute;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .photo-circle--1 {
+    width: 27vw;
+    height: 27vw;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .photo-circle--2 {
+    width: 22vw;
+    height: 22vw;
+    top: 19vw;
+    right: 0;
+    z-index: 2;
+  }
+
+  .photo-circle--3 {
+    width: 18vw;
+    height: 18vw;
+    top: 37vw;
+    left: 0;
+    z-index: 3;
+  }
+
+</style>
+
+<script>
+  document.querySelectorAll('.inline-link').forEach(link => {
+    link.addEventListener('click', () => {
+      link.classList.add('link-glitch-click');
+      link.addEventListener('animationend', () => link.classList.remove('link-glitch-click'), { once: true });
+    });
+  });
+</script>
+
+<style>
+  @media (max-width: 900px) {
+    .about-content {
+      grid-template-columns: 1fr;
+    }
+
+    .about-photos {
+      height: 480px;
+    }
+
+    .photo-circle--1 {
+      width: 240px;
+      height: 240px;
+    }
+
+    .photo-circle--2 {
+      width: 200px;
+      height: 200px;
+      top: 180px;
+      right: 0;
+    }
+
+    .photo-circle--3 {
+      width: 170px;
+      height: 170px;
+      top: 340px;
+      left: 0;
+    }
+  }
+</style>
