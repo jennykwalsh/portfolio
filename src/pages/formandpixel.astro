@@ -25,10 +25,11 @@
       justify-content: center;
       align-items: center;
       padding: 2rem;
+      overflow-x: hidden;
     }
 
     .circle {
-      --size: clamp(340px, 72vmin, 760px);
+      --size: clamp(560px, 82vmin, 900px);
       width: var(--size);
       height: var(--size);
       flex-shrink: 0;
@@ -44,6 +45,16 @@
       text-align: left;
     }
 
+    @media (max-width: 600px) {
+      body {
+        padding: 0;
+      }
+
+      .circle {
+        --size: 130vw;
+      }
+    }
+
     .fp-logo {
       width: 75%;
       height: auto;
@@ -55,7 +66,7 @@
     }
 
     p {
-      font-size: clamp(0.72rem, 1.2vw, 0.92rem);
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
       line-height: 1.8;
       margin-bottom: 1em;
     }
