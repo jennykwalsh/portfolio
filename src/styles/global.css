@@ -217,17 +217,20 @@ main {
 .glitch-letter::before { color: #00FFFF; }
 .glitch-letter::after  { color: #FF00FF; }
 
-.glitch-phrase:hover .glitch-letter::before {
+.glitch-phrase:hover .glitch-letter::before,
+.glitch-phrase.glitch-active .glitch-letter::before {
   animation: glitch-c calc(1.6s + var(--i) * 28ms) steps(1) infinite;
   animation-delay: calc(var(--i) * 55ms);
 }
 
-.glitch-phrase:hover .glitch-letter::after {
+.glitch-phrase:hover .glitch-letter::after,
+.glitch-phrase.glitch-active .glitch-letter::after {
   animation: glitch-m calc(1.5s + var(--i) * 28ms) steps(1) infinite;
   animation-delay: calc(var(--i) * 55ms + 160ms);
 }
 
-.glitch-phrase:hover .glitch-letter {
+.glitch-phrase:hover .glitch-letter,
+.glitch-phrase.glitch-active .glitch-letter {
   animation: glitch-body calc(1.6s + var(--i) * 28ms) steps(1) infinite;
   animation-delay: calc(var(--i) * 55ms);
 }
