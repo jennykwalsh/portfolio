@@ -60,24 +60,26 @@ const projects = [
     <div class="projects">
       {projects.map((project) => (
         <article class={`project${!project.image ? ' project--no-image' : ''}`}>
-          <div class="project-text">
+          <div class="project-header">
             {project.logo
               ? <div class="project-logo"><img src={project.logo} alt={project.company} /></div>
               : <p class="company">{project.company}</p>
             }
             {project.role && <p class="role">{project.role}</p>}
             <h2 set:html={project.title} />
-            <p class="description" set:html={project.description} />
-            {project.link
-              ? <a href={project.link} class="project-link">{project.linkLabel}</a>
-              : <span class="project-link-soon">{project.linkLabel}</span>
-            }
           </div>
           {project.image && (
             <div class="project-image">
               <img src={project.image} alt={project.title} />
             </div>
           )}
+          <div class="project-body">
+            <p class="description" set:html={project.description} />
+            {project.link
+              ? <a href={project.link} class="project-link">{project.linkLabel}</a>
+              : <span class="project-link-soon">{project.linkLabel}</span>
+            }
+          </div>
         </article>
       ))}
     </div>
@@ -105,22 +107,43 @@ const projects = [
   .project {
     display: grid;
     grid-template-columns: 560px 1fr;
-    gap: 4rem;
-    align-items: center;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+      "header image"
+      "body   image";
+    column-gap: 4rem;
+    align-items: start;
   }
 
   .project--no-image {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "body";
   }
 
   .project--no-image .description {
     max-width: 100%;
   }
 
-  .project-text {
+  .project-header {
+    grid-area: header;
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
+  }
+
+  .project-body {
+    grid-area: body;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    padding-top: 0.85rem;
+  }
+
+  .project-image {
+    grid-area: image;
+    align-self: center;
   }
 
   .project-logo img {
@@ -218,6 +241,21 @@ const projects = [
   @media (max-width: 900px) {
     .project {
       grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "image"
+        "body";
+      row-gap: 0.75rem;
+    }
+
+    .project--no-image {
+      grid-template-areas:
+        "header"
+        "body";
+    }
+
+    .project-body {
+      padding-top: 0.25rem;
     }
   }
 
