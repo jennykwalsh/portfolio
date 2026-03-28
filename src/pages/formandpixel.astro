@@ -10,41 +10,53 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
 
     body {
-      background: #fff;
-      min-height: 100vh;
+      background: #ffffff;
+      font-family: 'Playfair Display', Georgia, serif;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Playfair Display', Georgia, serif;
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
     }
 
     .circle {
       background: #1a1a1a;
+      color: #ffffff;
       border-radius: 50%;
-      width: min(88vw, 88vh);
-      height: min(88vw, 88vh);
+      aspect-ratio: 1 / 1;
+      width: clamp(320px, 70vmin, 700px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 12%;
-      color: #fff;
+      padding: 15%;
       text-align: left;
+      flex-shrink: 0;
     }
 
     .fp-logo {
       width: 100%;
-      max-width: 280px;
-      margin-bottom: 1.75em;
+      max-width: 260px;
+      height: auto;
+      display: block;
+      margin: 0 auto 2em;
     }
 
     p {
-      font-size: clamp(0.78rem, 1.4vw, 1rem);
-      line-height: 1.75;
-      margin-bottom: 1.1em;
+      font-size: clamp(0.75rem, 1.3vw, 0.95rem);
+      line-height: 1.8;
+      margin-bottom: 1em;
     }
 
     p:last-child {
