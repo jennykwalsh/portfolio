@@ -18,6 +18,7 @@
       padding: 0;
     }
 
+    /* ── Desktop ── */
     body {
       background: #ffffff;
       font-family: 'Playfair Display', Georgia, serif;
@@ -43,29 +44,9 @@
       text-align: left;
     }
 
-    @media (max-width: 600px) {
-      body {
-        background: #1a1a1a;
-        display: block;
-        padding: 50px 20px;
-      }
-
-      .circle {
-        all: unset;
-        display: block;
-        color: #fff;
-      }
-
-      .fp-logo {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-
     .fp-logo {
       width: 75%;
       height: auto;
-      min-height: 0;
       display: block;
       flex-shrink: 0;
       object-fit: contain;
@@ -82,8 +63,7 @@
       margin-bottom: 0;
     }
 
-    strong em,
-    em strong {
+    strong em, em strong {
       font-weight: 700;
       font-style: italic;
       text-decoration: underline;
@@ -94,6 +74,42 @@
       color: inherit;
       text-decoration: underline;
       text-underline-offset: 3px;
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 600px) {
+      body {
+        background: #1a1a1a;
+        display: block;
+        padding: 50px 20px;
+      }
+
+      .circle {
+        all: unset;
+        display: block;
+        color: #ffffff;
+        font-family: 'Playfair Display', Georgia, serif;
+      }
+
+      .circle .fp-logo {
+        display: block;
+        width: 70%;
+        height: auto;
+        margin: 0 auto 2em;
+      }
+
+      .circle p {
+        display: block;
+        font-size: 1rem;
+        line-height: 1.8;
+        margin-bottom: 1em;
+        text-align: left;
+        color: #ffffff;
+      }
+
+      .circle p:last-child {
+        margin-bottom: 0;
+      }
     }
   </style>
 </head>
@@ -109,21 +125,16 @@
     const circle = document.querySelector('.circle');
 
     function fitCircle() {
-      if (window.innerWidth <= 600) return; // mobile handled by CSS
+      if (window.innerWidth <= 600) return;
 
-      // Release fixed size so we can measure natural content height
       circle.style.width = '';
       circle.style.height = 'auto';
       circle.style.overflow = 'visible';
 
-      // Desired width: 72vw, clamped between 700px and 900px
       const targetW = Math.min(Math.max(window.innerWidth * 0.72, 700), 900);
       circle.style.width = targetW + 'px';
 
-      // Measure how tall the content actually is at this width
       const contentH = circle.scrollHeight;
-
-      // Circle must be square — use whichever is larger
       const size = Math.max(targetW, contentH);
       circle.style.width = size + 'px';
       circle.style.height = size + 'px';
