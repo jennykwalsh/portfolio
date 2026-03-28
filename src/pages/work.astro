@@ -59,7 +59,7 @@ const projects = [
   <div class="work-page">
     <div class="projects">
       {projects.map((project) => (
-        <article class={`project${!project.image ? ' project--no-image' : ''}`}>
+        <article class={`project project--${project.company.toLowerCase().replace(/[\s-]/g, '')}${!project.image ? ' project--no-image' : ''}`}>
           <div class="project-header">
             {project.logo
               ? <div class="project-logo"><img src={project.logo} alt={project.company} /></div>
@@ -150,6 +150,16 @@ const projects = [
     height: 32px;
     width: auto;
     display: block;
+  }
+
+  .project--shopify .project-logo img {
+    height: 43px;
+    position: relative;
+    top: 10px;
+  }
+
+  .project--1800contacts .project-logo img {
+    height: 30px;
   }
 
   .role {
