@@ -29,9 +29,6 @@
     }
 
     .circle {
-      --size: clamp(700px, 72vw, 900px);
-      width: var(--size);
-      height: var(--size);
       flex-shrink: 0;
       border-radius: 50%;
       background: #1a1a1a;
@@ -101,5 +98,33 @@
     <p>Our commitment to creativity is not confined to these domains. We're continuously exploring and embracing new artistic endeavors, pushing the boundaries of what's possible.</p>
     <p style="text-align: center; margin-top: 1.25em;"><strong><em><a href="mailto:jennywalsh@hey.com">Contact us.</a></em></strong></p>
   </div>
+  <script>
+    const circle = document.querySelector('.circle');
+
+    function fitCircle() {
+      if (window.innerWidth <= 600) return; // mobile handled by CSS
+
+      // Release fixed size so we can measure natural content height
+      circle.style.width = '';
+      circle.style.height = 'auto';
+      circle.style.overflow = 'visible';
+
+      // Desired width: 72vw, clamped between 700px and 900px
+      const targetW = Math.min(Math.max(window.innerWidth * 0.72, 700), 900);
+      circle.style.width = targetW + 'px';
+
+      // Measure how tall the content actually is at this width
+      const contentH = circle.scrollHeight;
+
+      // Circle must be square — use whichever is larger
+      const size = Math.max(targetW, contentH);
+      circle.style.width = size + 'px';
+      circle.style.height = size + 'px';
+      circle.style.overflow = 'hidden';
+    }
+
+    fitCircle();
+    window.addEventListener('resize', fitCircle);
+  </script>
 </body>
 </html>
