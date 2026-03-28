@@ -75,12 +75,14 @@ const { title } = Astro.props;
       // Skip on case study pages
       const isCaseStudy = window.location.pathname.startsWith('/work/');
       if (!isCaseStudy) {
+        const isHome = window.location.pathname === '/';
+        const delay = isHome ? 100 : 250;
         const phrases = document.querySelectorAll('.glitch-phrase');
         phrases.forEach((phrase, i) => {
           setTimeout(() => {
             phrase.classList.add('glitch-active');
             setTimeout(() => phrase.classList.remove('glitch-active'), 1800);
-          }, i * 250);
+          }, i * delay);
         });
       }
 
