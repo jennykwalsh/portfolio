@@ -71,18 +71,14 @@ const { title } = Astro.props;
         homeLink.style.display = 'none';
       }
 
-      // Auto-glitch on touch devices
-      if (window.matchMedia('(hover: none)').matches) {
-        const fireRandomGlitch = () => {
-          const phrases = document.querySelectorAll('.glitch-phrase');
-          if (!phrases.length) return;
-          const pick = phrases[Math.floor(Math.random() * phrases.length)];
-          pick.classList.add('glitch-active');
-          setTimeout(() => pick.classList.remove('glitch-active'), 1800);
-          setTimeout(fireRandomGlitch, 2000 + Math.random() * 3000);
-        };
-        setTimeout(fireRandomGlitch, 1000);
-      }
+      // Load-in glitch: cascade left to right through each word, once
+      const phrases = document.querySelectorAll('.glitch-phrase');
+      phrases.forEach((phrase, i) => {
+        setTimeout(() => {
+          phrase.classList.add('glitch-active');
+          setTimeout(() => phrase.classList.remove('glitch-active'), 1800);
+        }, i * 250);
+      });
 
       const hamburger = document.getElementById('hamburger');
       const menu = document.getElementById('menu');
