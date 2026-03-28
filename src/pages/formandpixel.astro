@@ -1,0 +1,123 @@
+---
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form &amp; Pixel Arts Collective</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #fff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .scene {
+      position: relative;
+      width: min(520px, calc(88vh * 0.74), 90vw);
+    }
+
+    /* The rotating shape */
+    .shape-svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      animation: spin 28s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* Content sits on top, centered, doesn't rotate */
+    .shape-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 18% 20%;
+      color: #fff;
+    }
+
+    .fp-logo {
+      width: 100%;
+      max-width: 280px;
+      margin-bottom: 1.75em;
+    }
+
+    .shape-content p {
+      font-size: clamp(0.78rem, 1.6vw, 1rem);
+      line-height: 1.75;
+      margin-bottom: 1.1em;
+    }
+
+    .shape-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .shape-content em {
+      font-style: italic;
+    }
+
+    .shape-content strong em,
+    .shape-content em strong {
+      font-weight: 700;
+      font-style: italic;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+
+    <svg class="shape-svg" viewBox="0 0 500 680" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="goo" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="16" result="blur"/>
+          <feColorMatrix in="blur" mode="matrix"
+            values="1 0 0 0 0
+                    0 1 0 0 0
+                    0 0 1 0 0
+                    0 0 0 30 -12"
+            result="goo"/>
+        </filter>
+      </defs>
+      <g filter="url(#goo)" fill="#1a1a1a">
+        <!-- Central mass -->
+        <rect x="110" y="70" width="280" height="540" rx="60"/>
+        <!-- Left bumps (3) -->
+        <ellipse cx="58"  cy="200" rx="90" ry="78"/>
+        <ellipse cx="52"  cy="340" rx="95" ry="78"/>
+        <ellipse cx="58"  cy="480" rx="90" ry="78"/>
+        <!-- Right bumps (3) -->
+        <ellipse cx="442" cy="200" rx="90" ry="78"/>
+        <ellipse cx="448" cy="340" rx="95" ry="78"/>
+        <ellipse cx="442" cy="480" rx="90" ry="78"/>
+      </g>
+    </svg>
+
+    <div class="shape-content">
+      <img class="fp-logo" src="/formandpixel-white.png" alt="Form &amp; Pixel Arts Collective" />
+      <p>Form &amp; Pixel Arts Collective champions a wide array of creative services, including acrobatic instruction with <strong><em>Duo Coalesce</em></strong>, and unique pottery creations from <strong><em>Thistle Jar</em></strong>.</p>
+      <p>At the heart of our collective, Form &amp; Pixel not only captures life's moments through stunning <strong><em>photography</em></strong> but also innovative <strong><em>product design</em></strong>, merging aesthetics with functionality.</p>
+      <p>Our commitment to creativity is not confined to these domains. We're continuously exploring and embracing new artistic endeavors, pushing the boundaries of what's possible.</p>
+    </div>
+
+  </div>
+</body>
+</html>

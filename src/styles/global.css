@@ -66,6 +66,12 @@ a {
   opacity: 1;
 }
 
+@media (max-width: 768px) {
+  .nav-logo {
+    left: 12px;
+  }
+}
+
 /* Hamburger — vertically centered with signature logo */
 .hamburger {
   position: fixed;
