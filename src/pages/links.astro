@@ -121,6 +121,59 @@
       opacity: 0.6;
     }
 
+    /* ── CIRCUS ── */
+    .block-circus {
+      margin-bottom: 1rem;
+      padding: 1.5rem;
+      background: #FF00FF;
+      color: #1a1a1a;
+      transform: rotate(1deg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .block-circus::before {
+      content: '✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦';
+      position: absolute;
+      top: 0.35rem;
+      left: 0;
+      right: 0;
+      font-size: 0.5rem;
+      letter-spacing: 0.3em;
+      opacity: 0.35;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .block-circus .eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      opacity: 0.55;
+      margin-bottom: 0.4rem;
+    }
+
+    .block-circus a {
+      display: block;
+      font-size: clamp(2rem, 9vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1;
+      color: #1a1a1a;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .block-circus a:hover { text-decoration: underline; }
+
+    .block-circus .sub {
+      font-size: 0.8rem;
+      font-weight: 300;
+      margin-top: 0.5rem;
+      opacity: 0.6;
+      letter-spacing: 0.03em;
+    }
+
     /* ── PHOTOGRAPHY ── */
     .block-photo {
       margin-bottom: 1rem;
@@ -302,6 +355,12 @@
     <p class="eyebrow">Video</p>
     <a href="#" target="_blank" rel="noopener">YouTube →</a>
     <p class="sub">acrobatics · circus · yurts · #1SecondEveryday</p>
+  </div>
+
+  <div class="block-circus">
+    <p class="eyebrow">Live performance</p>
+    <a href="/circus">up in the air →</a>
+    <p class="sub">aerial silks · duo trapeze · acrobatics</p>
   </div>
 
   <div class="block-photo">
