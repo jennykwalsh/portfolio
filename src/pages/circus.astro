@@ -182,6 +182,33 @@
       font-weight: 700;
     }
 
+    .dark-link {
+      color: #F6FF00;
+      text-decoration: none;
+      background-color: rgba(255,255,255,0.1);
+      padding: 0 4px;
+      display: inline-block;
+      position: relative;
+      transition: box-shadow 0.1s steps(2), transform 0.1s steps(2);
+    }
+
+    .dark-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 6px 3px 0 #00FFFF, -6px -3px 0 #FF00FF;
+    }
+
+    @keyframes dark-link-glitch {
+      0%   { transform: scale(0.95);                                background: #F6FF00; color: #1a1a1a; box-shadow:  6px  3px 0 #00FFFF, -6px -3px 0 #FF00FF; }
+      20%  { transform: scale(1.05) skewX(-5deg) translateY(-3px); background: #1a1a1a; color: #F6FF00; box-shadow:  6px  3px 0 #FF00FF, -6px -3px 0 #00FFFF; }
+      40%  { transform: scale(0.98) skewX(3deg)  translateY(-1px); background: #00FFFF; color: #1a1a1a; box-shadow: -6px -3px 0 #FF00FF,  6px  3px 0 #F6FF00; }
+      65%  { transform: scale(1.02)              translateY(-2px); background: #1a1a1a; color: #F6FF00; box-shadow:  6px  3px 0 #00FFFF, -6px -3px 0 #FF00FF; }
+      100% { transform: scale(1)                 translateY(0);    background: rgba(255,255,255,0.1); color: #F6FF00; box-shadow: none; }
+    }
+
+    .dark-link-glitch-click {
+      animation: dark-link-glitch 0.38s steps(1) forwards;
+    }
+
     /* ── GALLERY ── */
     .gallery {
       padding-bottom: 5rem;
@@ -424,7 +451,7 @@
       as a competitive gymnast. As an adult, I transitioned to circus performance — beginning with
       aerial silks in 2012, then quickly expanding my repertoire as I took professional contracts
       with local productions. <strong>Duo Trapeze, Duo Silks, and Acrobatics</strong> took center
-      stage, and now I perform with my life partner as <strong><a href="https://www.instagram.com/danielwalshacrobatics/" style="color:#F6FF00;text-decoration:none;border-bottom:1px solid rgba(246,255,0,0.4);" target="_blank" rel="noopener">Duo Coalesce</a></strong>.
+      stage, and now I perform with my life partner as <strong><a href="https://www.instagram.com/danielwalshacrobatics/" class="dark-link" target="_blank" rel="noopener">Duo Coalesce</a></strong>.
     </p>
   </div>
 
@@ -667,6 +694,13 @@
   </div>
 
   <script>
+    document.querySelectorAll('.dark-link').forEach(link => {
+      link.addEventListener('click', () => {
+        link.classList.add('dark-link-glitch-click');
+        link.addEventListener('animationend', () => link.classList.remove('dark-link-glitch-click'), { once: true });
+      });
+    });
+
     const hamburger = document.getElementById('hamburger');
     const menu = document.getElementById('menu');
 
